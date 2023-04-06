@@ -14,6 +14,8 @@ Y_MAX_PIXELS = 600.0
 Y_MIN_PIXELS = 80.0
 Y_MAX_MM = 475.0
 Y_MIN_MM = 0.0
+X_MIN_PIXELS = 961
+KICK_TIMEOUT = 1.0
 MAX_STEPS = 550.0
 MAX_PLAYER_TRAVEL = 130.0
 MOVE_BUF = 8.0
@@ -41,25 +43,28 @@ def callback(point):
 def foosbotSpin():
     global last_ball_y_mm
 
+    time_last_kick_s = rospy.get_time()
+
     while not rospy.is_shutdown():
 
-        # if (ballPose.x < GOALIE_XPOS > 5):
-        #     kick_pub.publish()
-        #     rospy.loginfo("Kicked!")
+        if (ballPose.x > 825.0 and ballPose.x < 925.0 and rospy.get_time() - time_last_kick_s > KICK_TIMEOUT):
+            kick_pub.publish()
+            time_last_kick_s = rospy.get_time()
+            rospy.loginfo("Kicked!")
 
         ball_pose_y_mm = pixels_to_mm(ballPose.y)
-        rospy.loginfo("X:%.2f   Y:%.2f" % (ballPose.x, ball_pose_y_mm))
+        # rospy.loginfo("X:%.2f   Y:%.2f" % (ballPose.x, ball_pose_y_mm))
         # rospy.loginfo("ball_pose_y_mm %.2f" %ball_pose_y_mm)
         # rospy.loginfo("last_ball %.2f" %last_ball_y_mm)
         if ball_pose_y_mm < 150:
-            player_offset = 0
+            player_offset = 20
             rospy.loginfo("Player 1")
         elif ball_pose_y_mm < 300:
             rospy.loginfo("Player 2")
             player_offset = 150
         else:
             rospy.loginfo("Player 3")
-            player_offset = 300 
+            player_offset = 280 
 
         if (abs(last_ball_y_mm - ball_pose_y_mm) > MOVE_BUF):
             x_target = abs(mm_to_steps(ball_pose_y_mm-player_offset))
@@ -82,7 +87,7 @@ def init():
     # anonymous=True flag means that rospy will choose a unique
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
-    rospy.init_node('foosbot', anonymous=True)
+    rospy.init_node('foosbot')
 
     rospy.Subscriber("ball", Point, callback)
     kick_pub = rospy.Publisher("kick", Empty, queue_size=0)

@@ -1,0 +1,213 @@
+digraph graphname {
+	graph [bb="0,0,1232.9,259",
+		compound=True,
+		rank=same,
+		rankdir=LR,
+		ranksep=0.2
+	];
+	node [label="\N"];
+	subgraph cluster___usb_cam {
+		graph [bb="201,8,443,168",
+			compound=True,
+			label="/usb_cam",
+			lheight=0.21,
+			lp="322,156.5",
+			lwidth=0.74,
+			rank=same,
+			rankdir=LR,
+			ranksep=0.2,
+			style=bold
+		];
+		subgraph cluster___usb_cam__image_raw {
+			graph [bb="209,62,435,137",
+				compound=True,
+				label="/usb_cam/image_raw",
+				lheight=0.21,
+				lp="322,125.5",
+				lwidth=1.64,
+				rank=same,
+				rankdir=LR,
+				ranksep=0.2,
+				style=bold
+			];
+			n_n__usb_cam__image_raw__image_topics			 [URL=topic_3A__usb_cam__image_raw__image_topics,
+				height=0.5,
+				label="/usb_cam/image_raw/image_topics",
+				pos="322,88",
+				shape=box3d,
+				tooltip="topic:/usb_cam/image_raw/image_topics",
+				width=2.9167];
+		}
+		t___usb_cam__camera_info		 [URL=topic_3A__usb_cam__camera_info,
+			height=0.5,
+			label="/usb_cam/camera_info",
+			pos="322,34",
+			shape=box,
+			tooltip="topic:/usb_cam/camera_info",
+			width=1.9583];
+	}
+	subgraph cluster___image_rect {
+		graph [bb="13.5,74,187.5,149",
+			compound=True,
+			label="/image_rect",
+			lheight=0.21,
+			lp="100.5,137.5",
+			lwidth=0.90,
+			rank=same,
+			rankdir=LR,
+			ranksep=0.2,
+			style=bold
+		];
+		n_n__image_rect__image_topics		 [URL=topic_3A__image_rect__image_topics,
+			height=0.5,
+			label="/image_rect/image_topics",
+			pos="100.5,100",
+			shape=box3d,
+			tooltip="topic:/image_rect/image_topics",
+			width=2.1944];
+	}
+	subgraph cluster___image_mono {
+		graph [bb="8,172,193,247",
+			compound=True,
+			label="/image_mono",
+			lheight=0.21,
+			lp="100.5,235.5",
+			lwidth=1.06,
+			rank=same,
+			rankdir=LR,
+			ranksep=0.2,
+			style=bold
+		];
+		n_n__image_mono__image_topics		 [URL=topic_3A__image_mono__image_topics,
+			height=0.5,
+			label="/image_mono/image_topics",
+			pos="100.5,198",
+			shape=box3d,
+			tooltip="topic:/image_mono/image_topics",
+			width=2.3472];
+	}
+	subgraph cluster___image_color {
+		graph [bb="231.5,176,412.5,251",
+			compound=True,
+			label="/image_color",
+			lheight=0.21,
+			lp="322,239.5",
+			lwidth=1.01,
+			rank=same,
+			rankdir=LR,
+			ranksep=0.2,
+			style=bold
+		];
+		n_n__image_color__image_topics		 [URL=topic_3A__image_color__image_topics,
+			height=0.5,
+			label="/image_color/image_topics",
+			pos="322,202",
+			shape=box3d,
+			tooltip="topic:/image_color/image_topics",
+			width=2.2917];
+	}
+	subgraph cluster___image_rect_color {
+		graph [bb="569.49,62,777.49,137",
+			compound=True,
+			label="/image_rect_color",
+			lheight=0.21,
+			lp="673.49,125.5",
+			lwidth=1.39,
+			rank=same,
+			rankdir=LR,
+			ranksep=0.2,
+			style=bold
+		];
+		n_n__image_rect_color__image_topics		 [URL=topic_3A__image_rect_color__image_topics,
+			height=0.5,
+			label="/image_rect_color/image_topics",
+			pos="673.49,88",
+			shape=box3d,
+			tooltip="topic:/image_rect_color/image_topics",
+			width=2.6667];
+	}
+	n___image_proc	 [URL=__image_proc,
+		height=0.5,
+		label="/image_proc",
+		pos="506.25,88",
+		shape=ellipse,
+		tooltip="/image_proc",
+		width=1.5346];
+	n_n__usb_cam__image_raw__image_topics -> n___image_proc	 [penwidth=1,
+		pos="e,450.62,88 427.04,88 431.59,88 436.09,88 440.5,88"];
+	t___usb_cam__camera_info -> n___image_proc	 [penwidth=1,
+		pos="e,477.58,72.562 392.51,44.936 409.26,48.369 426.94,52.688 443,58 451.47,60.8 460.28,64.46 468.54,68.256"];
+	n_n__image_color__image_topics -> n___image_proc	 [penwidth=1,
+		pos="e,479.92,104.05 348.45,183.88 373.63,170.65 412.15,152.31 443,132 452.8,125.55 462.81,117.8 471.88,110.53"];
+	n___ball_track	 [URL=__ball_track,
+		height=0.5,
+		label="/ball_track",
+		pos="833.59,88",
+		shape=ellipse,
+		tooltip="/ball_track",
+		width=1.336];
+	n_n__image_rect_color__image_topics -> n___ball_track	 [penwidth=1,
+		pos="e,785.35,88 769.85,88 771.67,88 773.48,88 775.28,88"];
+	t___xpos	 [URL=topic_3A__xpos,
+		height=0.5,
+		label="/xpos",
+		pos="1084,115",
+		shape=box,
+		tooltip="topic:/xpos",
+		width=0.75];
+	n___serial_node	 [URL=__serial_node,
+		height=0.5,
+		label="/serial_node",
+		pos="1178.9,88",
+		shape=ellipse,
+		tooltip="/serial_node",
+		width=1.4985];
+	t___xpos -> n___serial_node	 [penwidth=1,
+		pos="e,1137.5,99.766 1111.2,107.26 1116.4,105.77 1122.1,104.15 1127.9,102.52"];
+	t___kick	 [URL=topic_3A__kick,
+		height=0.5,
+		label="/kick",
+		pos="1084,61",
+		shape=box,
+		tooltip="topic:/kick",
+		width=0.75];
+	t___kick -> n___serial_node	 [penwidth=1,
+		pos="e,1137.5,76.234 1111.2,68.737 1116.4,70.235 1122.1,71.848 1127.9,73.482"];
+	t___ball	 [URL=topic_3A__ball,
+		height=0.5,
+		label="/ball",
+		pos="922.68,88",
+		shape=box,
+		tooltip="topic:/ball",
+		width=0.75];
+	n___foosbot	 [URL=__foosbot,
+		height=0.5,
+		label="/foosbot",
+		pos="1003.3,88",
+		shape=ellipse,
+		tooltip="/foosbot",
+		width=1.1013];
+	t___ball -> n___foosbot	 [penwidth=1,
+		pos="e,963.6,88 949.98,88 951.08,88 952.19,88 953.31,88"];
+	n___ball_track -> t___ball	 [penwidth=1,
+		pos="e,895.67,88 881.78,88 882.97,88 884.16,88 885.34,88"];
+	n___usb_cam	 [URL=__usb_cam,
+		height=0.5,
+		label="/usb_cam",
+		pos="100.5,38",
+		shape=ellipse,
+		tooltip="/usb_cam",
+		width=1.2457];
+	n___usb_cam -> n_n__usb_cam__image_raw__image_topics	 [penwidth=1,
+		pos="e,219.22,69.985 136.58,48.917 155.63,54.462 179.46,61.053 201,66 203.69,66.617 206.41,67.228 209.16,67.832"];
+	n___usb_cam -> t___usb_cam__camera_info	 [penwidth=1,
+		pos="e,251.08,35.281 145.32,37.191 172.7,36.696 208.53,36.049 240.76,35.467"];
+	n___image_proc -> n_n__image_color__image_topics	 [penwidth=1,
+		pos="e,381.37,183.96 494.77,105.75 482.56,119.4 462.38,137.24 443,150 426.6,160.8 408.04,171.04 390.46,179.62"];
+	n___image_proc -> n_n__image_rect_color__image_topics	 [penwidth=1,
+		pos="e,577.42,88 561.94,88 563.67,88 565.42,88 567.18,88"];
+	n___foosbot -> t___xpos	 [penwidth=1,
+		pos="e,1056.8,105.91 1035.7,98.826 1039.5,100.11 1043.4,101.43 1047.3,102.73"];
+	n___foosbot -> t___kick	 [penwidth=1,
+		pos="e,1056.8,70.094 1035.7,77.174 1039.5,75.89 1043.4,74.573 1047.3,73.271"];
+}
